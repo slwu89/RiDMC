@@ -1,13 +1,4 @@
-PKG_CPPFLAGS=-I$(LIB_GSL)/include -I./lua-5.1.4/src -I./idmclib -I.
-PKG_LIBS=-L$(LIB_GSL)/lib -lgsl -lgslcblas -L./lua-5.1.4/src -llua
 
-.PHONY: all lua clean
-     
-all: $(SHLIB)
-$(SHLIB): lua
-     
-lua:
-	(cd lua-5.1.4/src; make liblua.a CC="$(CC)" AR="$(AR) rcu" RANLIB="$(RANLIB)")
+#PKG_CFLAGS += -std=c11 -g -I./lua-5.1.4/src -I./idmclib -I.
+#PKG_LIBS += -L/usr/lib -L/usr/local/lib -lgsl -llua -lgslcblas
 
-clean:
-	(cd lua-5.1.4; make clean)

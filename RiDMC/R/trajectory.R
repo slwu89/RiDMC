@@ -17,8 +17,8 @@ Trajectory <- function(idmc_model, par, var, time=1, transient=0,
     checkPositiveScalar(eps)
     ans$eps <- eps
     ans$integrator <- integrator
-    trajectory <- .Call("ridmc_ctrajectory_alloc", 
-      m$model, as.double(par), as.double(var), 
+    trajectory <- .Call("ridmc_ctrajectory_alloc",
+      m$model, as.double(par), as.double(var),
       as.double(eps), as.integer(integrator), PACKAGE='RiDMC')
     ans$trajectory <- trajectory
     ans$step <- function()
@@ -32,7 +32,7 @@ Trajectory <- function(idmc_model, par, var, time=1, transient=0,
     class(ans) <- c("idmc_ctrajectory","idmc_trajectory")
   } else { ##Discrete model
     eps <- 1
-    trajectory <- .Call("ridmc_dtrajectory_alloc", 
+    trajectory <- .Call("ridmc_dtrajectory_alloc",
       m$model, as.double(par), as.double(var), PACKAGE='RiDMC')
     ans$eps <- eps
     ans$trajectory <- trajectory
@@ -67,7 +67,7 @@ setTrajectorySeed <- function(idmc_trajectory, seed)
 as.matrix.idmc_trajectory <- function(x, ...)
   getTrajectoryValues(x)
 as.ts.idmc_trajectory <- function(x, ...)
-  ts(as.matrix(x), frequency = 1/x$eps, 
+  ts(as.matrix(x), frequency = 1/x$eps,
     start=x$transient, ...)
 
 stepTrajectory <- function(idmc_trajectory, time=1) {

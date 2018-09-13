@@ -1,2 +1,12 @@
-PKG_CPPFLAGS=@GSL_CFLAGS@ @LUA_CFLAGS@ -I./idmclib -I.
-PKG_LIBS=@GSL_LIBS@ @LUA_LIBS@
+#PKG_CPPFLAGS=@GSL_CFLAGS@ @LUA_CFLAGS@ -I./idmclib -I.
+#PKG_LIBS=@GSL_LIBS@ @LUA_LIBS@
+#PKG_CFLAGS += -std=c11 -g
+#PKG_LIBS += -L/usr/lib -L/usr/local/lib -lgsl  -I/usr/local/include -llua
+
+
+#PKG_CFLAGS += -std=c11 -g -I./lua-5.1.4/src -I./idmclib -I.
+#PKG_LIBS += -L/usr/lib -L/usr/local/lib -lgsl -llua -lgslcblas
+
+
+PKG_CFLAGS += -std=c11 -g
+PKG_LIBS += -L/usr/lib -L/usr/local/lib -lgsl
